@@ -10,7 +10,7 @@ import androidx.room.Update
 @Dao
 interface MealDao {
     @Query("SELECT * FROM meals")
-    suspend fun getAll(): Array<MealClass>
+     fun getAll(): Array<MealClass>
 
     @Query("SELECT * FROM meals WHERE name=:name")
     suspend fun getMealByName(name:String):List<MealClass>
