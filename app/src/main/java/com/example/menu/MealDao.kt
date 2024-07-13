@@ -10,13 +10,13 @@ import androidx.room.Update
 @Dao
 interface MealDao {
     @Query("SELECT * FROM meals")
-     fun getAll(): Array<MealClass>
+    suspend fun getAll(): Array<MealClass>
 
     @Query("SELECT * FROM meals WHERE name=:name")
     suspend fun getMealByName(name:String):List<MealClass>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-     fun insert(vararg meal:MealClass):List<Long>
+     suspend fun insert(vararg meal:MealClass):List<Long>
     @Update
     fun update(meal:MealClass)
 
