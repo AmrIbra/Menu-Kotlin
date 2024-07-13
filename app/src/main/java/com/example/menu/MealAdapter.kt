@@ -53,7 +53,8 @@ class MealAdapter(val data: List<MealClass>, val context: Context):RecyclerView.
 
 
         val mealDao=MealDatabase.getInstance(context = context).mealDao()
-        val newMeal=MealClass(img = data[position].img, name = holder.name.toString())
+        //val newMeal=MealClass(img = data[position].img, name = holder.name.toString())
+        val newMeal = data[position]
 
 
         holder.buttonAdd.setOnClickListener {

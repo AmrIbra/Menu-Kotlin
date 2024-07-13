@@ -21,5 +21,5 @@ interface MealDao {
     fun update(meal:MealClass)
 
     @Delete
-    fun delete(meal:MealClass):Int
+    suspend fun delete(meal:MealClass):Int
 }

@@ -10,6 +10,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class FavAdapter(val fav_data:List<MealClass>, val context:Context): RecyclerView.Adapter<FavAdapter.ViewHolder>() {
 
@@ -40,11 +42,13 @@ class FavAdapter(val fav_data:List<MealClass>, val context:Context): RecyclerVie
         })
 
         val mealDao=MealDatabase.getInstance(context = context).mealDao()
-        val newMeal=MealClass(img = fav_data[position].img, name = holder.name.toString())
+        val newMeal=fav_data[position]
 
         holder.buttonDel.setOnClickListener {
+            GlobalScope.launch {
             mealDao.delete(newMeal)
-            Toast.makeText(context, "Meal removed from favorites", Toast.LENGTH_SHORT).show()
+            }
+            //Toast.makeText(context, "Meal removed from favorites", Toast.LENGTH_SHORT).show()
         }
 
 
