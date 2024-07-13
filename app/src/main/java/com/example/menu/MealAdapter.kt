@@ -10,6 +10,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.withContext
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class MealAdapter(val data: List<MealClass>, val context: Context):RecyclerView.Adapter<MealAdapter.ViewHolder>() {
 
@@ -19,12 +25,16 @@ class MealAdapter(val data: List<MealClass>, val context: Context):RecyclerView.
         val name:TextView=row.findViewById(R.id.textName)
         val buttonAdd:Button=row.findViewById(R.id.btnAdd)
 
+
+
     }
 
     override fun onCreateViewHolder(recyclerView: ViewGroup, viewType: Int): ViewHolder {
         val inflater=LayoutInflater.from(recyclerView.context)
         val inflatedView=inflater.inflate(R.layout.item,recyclerView,false)
         val holder=ViewHolder(inflatedView)
+
+
 
         return holder
     }
@@ -40,12 +50,17 @@ class MealAdapter(val data: List<MealClass>, val context: Context):RecyclerView.
             Toast.makeText(context,data.get(position).name, Toast.LENGTH_SHORT).show()
         })
 
+
+
         val mealDao=MealDatabase.getInstance(context = context).mealDao()
         val newMeal=MealClass(img = data[position].img, name = holder.name.toString())
 
+
         holder.buttonAdd.setOnClickListener {
+            GlobalScope.launch {
                 mealDao.insert(newMeal)
             Toast.makeText(context, "Meal added to favorites", Toast.LENGTH_SHORT).show()
+            }
         }
 
 
