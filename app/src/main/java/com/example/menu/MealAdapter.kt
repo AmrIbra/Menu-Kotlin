@@ -59,7 +59,7 @@ class MealAdapter(val data: List<MealClass>, val context: Context):RecyclerView.
         holder.buttonAdd.setOnClickListener {
             GlobalScope.launch {
                 mealDao.insert(newMeal)
-            Toast.makeText(context, "Meal added to favorites", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "Meal added to favorites", Toast.LENGTH_SHORT).show()
             }
         }
 
