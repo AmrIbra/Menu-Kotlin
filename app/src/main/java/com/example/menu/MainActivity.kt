@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var buttonM: Button
     lateinit var buttonF: Button
+    lateinit var buttonR: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         buttonF.setOnClickListener({
             val intentF = Intent(this, FavActivity::class.java)
             startActivity(intentF)
+        })
+
+        buttonR=findViewById(R.id.buttonRandom)
+        buttonR.setOnClickListener({
+            val intentR = Intent(this, RandomActivity::class.java)
+            startActivity(intentR)
         })
 
     }
