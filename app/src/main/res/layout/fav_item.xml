@@ -3,27 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fav_row"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:minHeight="80dp">
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="112dp"
+        android:layout_height="74dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="98dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
 
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="98dp"
         android:layout_height="0dp"
+        android:layout_marginStart="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/btnDel">
+        app:layout_constraintTop_toTopOf="@+id/btnDel"
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/textName2"
@@ -32,8 +37,6 @@
             android:text="TextView"
             android:textSize="20sp" />
     </FrameLayout>
-
-
 
     <Button
         android:id="@+id/btnDel"
